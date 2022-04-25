@@ -1,35 +1,12 @@
-<h4>sbb-button</h4>
-<button type="button" sbb-button [disabled]="disabled">Primary</button>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <img src="../assets/images/nav-logo.png" class="nav-logo">
+</div>
 
-<h4>sbb-secondary-button</h4>
-<button type="button" sbb-secondary-button [disabled]="disabled">
-  Secondary
-</button>
-
-<h4>sbb-ghost-button</h4>
-<p>In standard variant, this button will be hidden when disabled.</p>
-<button type="button" sbb-ghost-button [disabled]="disabled">Ghost</button>
-
-<h4>sbb-frameless-button (standard only)</h4>
-<p>
-  This button is only intended to be used with standard variant.<br />
-  In standard variant, this button will be hidden when disabled.
-</p>
-<button type="button" sbb-frameless-button [disabled]="disabled">
-  Frameless
-</button>
-
-<h4>sbb-alt-button (lean only)</h4>
-<p>This button is only intended to be used with lean variant.</p>
-<button type="button" sbb-alt-button [disabled]="disabled">Primary Alt</button>
-
-<h4>sbb-icon-button (lean only)</h4>
-<p>This button is only intended to be used with lean variant.</p>
-<button type="button" sbb-icon-button [disabled]="disabled">
-  <sbb-icon svgIcon="kom:house-small"></sbb-icon>
-</button>
-
-<h3 class="properties">Properties</h3>
-<sbb-checkbox [(ngModel)]="disabled">Disable Buttons</sbb-checkbox>
-
-<sbb-search-autocomplete-example></sbb-search-autocomplete-example>
+<div style="padding-left: 16px">
+  <h2>Top Navigation Example</h2>
+  <p>Some content..</p>
+</div>

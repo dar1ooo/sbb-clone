@@ -7,10 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RouterModule } from '@angular/router';
-import { SearchAutocompleteExample } from './searchautocomplete/searchautocomplete.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchAutocompleteExample],
+  declarations: [AppComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
