@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { RouterModule } from '@angular/router';
-
+import { Route, RouterModule, Routes } from '@angular/router';
+import { DesignPatternComponent } from './design-pattern/design-pattern.component';
+const routes: Routes = [
+  { path: 'welcome', component: AppComponent }
+];
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DesignPatternComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -17,7 +20,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     DragDropModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([routes]),
     SbbModule,
   ],
   providers: [],
