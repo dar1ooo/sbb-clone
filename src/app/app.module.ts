@@ -8,9 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { DesignPatternComponent } from './design-pattern/design-pattern.component';
-const routes: Routes = [
-  { path: 'welcome', component: AppComponent }
-];
 @NgModule({
   declarations: [AppComponent, DesignPatternComponent],
   imports: [
@@ -20,7 +17,7 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     DragDropModule,
-    RouterModule.forRoot([routes]),
+    RouterModule.forRoot([]),
     SbbModule,
   ],
   providers: [],
