@@ -1,9 +1,322 @@
 <sbb-expansion-panel>
-    <sbb-expansion-panel-header> A single orphan (no accordion) panel </sbb-expansion-panel-header>
-  
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-    in culpa qui officia deserunt mollit anim id est laborum.
-  </sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Buttons</sbb-expansion-panel-header>
+  <h4>sbb-button</h4>
+  <button type="button" sbb-button [disabled]="false">Primary</button>
+
+  <h4>sbb-secondary-button</h4>
+  <button type="button" sbb-secondary-button [disabled]="false">
+    Secondary
+  </button>
+
+  <h4>sbb-ghost-button</h4>
+  <p>In standard variant, this button will be hidden when disabled.</p>
+  <button type="button" sbb-ghost-button [disabled]="false">Ghost</button>
+
+  <h4>sbb-frameless-button (standard only)</h4>
+  <p>
+    This button is only intended to be used with standard variant.<br />
+    In standard variant, this button will be hidden when disabled.
+  </p>
+  <button type="button" sbb-frameless-button [disabled]="false">
+    Frameless
+  </button>
+
+  <h4>sbb-alt-button (lean only)</h4>
+  <p>This button is only intended to be used with lean variant.</p>
+  <button type="button" sbb-alt-button [disabled]="false">Primary Alt</button>
+
+  <h4>sbb-icon-button (lean only)</h4>
+  <p>This button is only intended to be used with lean variant.</p>
+  <button type="button" sbb-icon-button [disabled]="false">
+    <sbb-icon svgIcon="kom:house-small"></sbb-icon>
+  </button>
+
+  <h3 class="properties">Properties</h3>
+  <sbb-checkbox>Disable Buttons</sbb-checkbox>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Alert</sbb-expansion-panel-header>
+
+  <sbb-alert
+    >This is a simple message with a simple <a href="#">Link</a></sbb-alert
+  >
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Checkbox Panel</sbb-expansion-panel-header>
+
+  <sbb-checkbox-panel [disabled]="true">
+    Bern HB - Basel SBB
+    <sbb-checkbox-panel-subtitle
+      >Valid: Mo, 01.03.2021</sbb-checkbox-panel-subtitle
+    >
+    <sbb-checkbox-panel-warning
+      >Reservation not possible</sbb-checkbox-panel-warning
+    >
+    <sbb-checkbox-panel-note>CHF 485650.00</sbb-checkbox-panel-note>
+  </sbb-checkbox-panel>
+  <sbb-checkbox-panel [disabled]="true">
+    Zürich HB - Basel SBB
+    <sbb-checkbox-panel-subtitle
+      >Valid: Mo, 01.03.2021</sbb-checkbox-panel-subtitle
+    >
+    <sbb-checkbox-panel-warning
+      >Reservation not possible</sbb-checkbox-panel-warning
+    >
+    <sbb-checkbox-panel-note>CHF 15000000.00</sbb-checkbox-panel-note>
+  </sbb-checkbox-panel>
+  <sbb-checkbox-panel [disabled]="false">
+    Genf HB - Basel SBB
+    <sbb-checkbox-panel-subtitle
+      >Valid: Mo, 01.03.2021</sbb-checkbox-panel-subtitle
+    >
+    <sbb-checkbox-panel-warning
+      >Reservation possible</sbb-checkbox-panel-warning
+    >
+    <sbb-checkbox-panel-note>CHF 250.00</sbb-checkbox-panel-note>
+  </sbb-checkbox-panel>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB DatePicker</sbb-expansion-panel-header>
+  <sbb-form-field label="Datepicker">
+    <sbb-datepicker
+      [arrows]="arrows.value"
+      [toggle]="toggle.value"
+      (closed)="closedEvent()"
+      (opened)="openedEvent()"
+    >
+      <input
+        type="text"
+        sbbDateInput
+        sbbInput
+        [formControl]="date"
+        [min]="minDate.value"
+        [max]="maxDate.value"
+        [readonly]="readonly.value"
+        (dateChange)="dateChangeEvent($event)"
+        (dateInput)="dateInputEvent($event)"
+      />
+    </sbb-datepicker>
+  </sbb-form-field>
+
+  <h4>Properties</h4>
+  <p class="sbb-checkbox-group-vertical">
+    <sbb-checkbox [formControl]="arrows">Arrows</sbb-checkbox>
+    <sbb-checkbox [formControl]="toggle">Toggle</sbb-checkbox>
+    <sbb-checkbox [formControl]="disabled">Disabled</sbb-checkbox>
+    <sbb-checkbox [formControl]="readonly">Readonly</sbb-checkbox>
+  </p>
+
+  <sbb-form-field label="Min Date" style="display: block">
+    <sbb-datepicker arrows>
+      <input type="text" sbbDateInput sbbInput [formControl]="minDate" />
+    </sbb-datepicker>
+  </sbb-form-field>
+
+  <sbb-form-field label="Max Date">
+    <sbb-datepicker arrows>
+      <input type="text" sbbDateInput sbbInput [formControl]="maxDate" />
+    </sbb-datepicker>
+  </sbb-form-field>
+
+  <pre>model: {{ date.value | date: "shortDate" }}</pre>
+  <pre>form control validity: {{ date.valid }}</pre>
+  <pre>form control errors: {{ date.errors | json }}</pre>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Form Fields</sbb-expansion-panel-header>
+  <sbb-form-field
+    label="Name"
+    [ngClass]="inputSize ? 'sbb-form-field-' + inputSize : ''"
+  >
+    <input
+      type="text"
+      sbbInput
+      [formControl]="name"
+      placeholder="Name"
+      [readonly]="readonly.value"
+    />
+    <sbb-error *ngIf="true">Name is required!</sbb-error>
+  </sbb-form-field>
+
+  <h4>Properties</h4>
+  <sbb-form-field label="Sizes">
+    <select [(ngModel)]="inputSize" sbbInput>
+      <option value=""></option>
+      <option value="short">Short</option>
+      <option value="medium">Medium</option>
+      <option value="long">Long</option>
+    </select>
+  </sbb-form-field>
+  <div class="sbb-checkbox-group-vertical">
+    <sbb-checkbox (change)="toggleDisabled($event)">Disabled</sbb-checkbox>
+    <sbb-checkbox [formControl]="readonly">Readonly</sbb-checkbox>
+  </div>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Loading</sbb-expansion-panel-header>
+  <h4>Tiny</h4>
+  <sbb-loading
+    mode="tiny"
+    aria-valuetext="Loading tiny, please wait"
+  ></sbb-loading>
+
+  <h4>Small</h4>
+  <sbb-loading
+    mode="small"
+    aria-valuetext="Loading small, please wait"
+  ></sbb-loading>
+
+  <h4>Medium</h4>
+  <sbb-loading
+    mode="medium"
+    aria-valuetext="Loading medium, please wait"
+  ></sbb-loading>
+
+  <h4>Big</h4>
+  <sbb-loading
+    mode="big"
+    aria-valuetext="Loading big, please wait"
+  ></sbb-loading>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Notifications</sbb-expansion-panel-header>
+  <sbb-notification type="success">Success</sbb-notification>
+  <sbb-notification type="info">Info</sbb-notification>
+  <sbb-notification type="warn">Warn</sbb-notification>
+  <sbb-notification type="error">Error</sbb-notification>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header> SBB Toasts </sbb-expansion-panel-header>
+  <sbb-form-field label="Notification type">
+    <select [(ngModel)]="type" sbbInput>
+      <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+    </select>
+  </sbb-form-field>
+  <sbb-form-field label="Notification position">
+    <select [(ngModel)]="position" sbbInput>
+      <option *ngFor="let position of positions" [value]="position">
+        {{ position }}
+      </option>
+    </select>
+  </sbb-form-field>
+  <button type="button" sbb-button (click)="showNotification()">
+    Show notification
+  </button>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Processflow</sbb-expansion-panel-header>
+  <sbb-processflow
+    aria-label="Process flow to fill out your name and address"
+    [linear]="linear"
+    #processflow
+  >
+    <sbb-step
+      aria-label="Step to fill out your name"
+      [stepControl]="firstFormGroup"
+    >
+      <form [formGroup]="firstFormGroup">
+        <ng-template sbbStepLabel>Fill out your name</ng-template>
+        <sbb-form-field>
+          <sbb-label>Name</sbb-label>
+          <input
+            sbbInput
+            placeholder="Last name, First name"
+            formControlName="firstCtrl"
+            required
+          />
+          <sbb-error *ngIf="true">Name is required!</sbb-error>
+        </sbb-form-field>
+        <div>
+          <button sbb-button sbbProcessflowNext>Next</button>
+        </div>
+      </form>
+    </sbb-step>
+    <sbb-step
+      aria-label="Step to fill out your address"
+      [stepControl]="secondFormGroup"
+      label="Fill out your address"
+    >
+      <form [formGroup]="secondFormGroup">
+        <sbb-form-field>
+          <sbb-label>Address</sbb-label>
+          <input
+            sbbInput
+            formControlName="secondCtrl"
+            placeholder="Ex. Hilfikerstrasse 1, 3000 Bern"
+            required
+          />
+          <sbb-error *ngIf="true">Name is required!</sbb-error>
+        </sbb-form-field>
+        <div>
+          <button sbb-secondary-button sbbProcessflowPrevious>Back</button>
+          <button sbb-button sbbProcessflowNext>Next</button>
+        </div>
+      </form>
+    </sbb-step>
+    <sbb-step aria-label="Step to finish the process flow or reset it">
+      <ng-template sbbStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button sbb-secondary-button sbbProcessflowPrevious>Back</button>
+        <button sbb-button (click)="processflow.reset()">Reset</button>
+      </div>
+    </sbb-step>
+  </sbb-processflow>
+
+  <h4>Properties</h4>
+  <sbb-checkbox [(ngModel)]="linear">Linear mode</sbb-checkbox>
+</sbb-expansion-panel>
+
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Status</sbb-expansion-panel-header>
+  <h4>Valid</h4>
+  <sbb-status type="valid" aria-label="Everything is valid"></sbb-status>
+  <h4>Warning</h4>
+  <sbb-status
+    type="warning"
+    aria-label="There is a potential problem"
+  ></sbb-status>
+  <h4>Invalid</h4>
+  <sbb-status
+    type="invalid"
+    aria-label="Something needs to be corrected"
+  ></sbb-status>
+</sbb-expansion-panel>
+<sbb-expansion-panel>
+  <sbb-expansion-panel-header>SBB Tabs</sbb-expansion-panel-header>
+  <sbb-tab-group>
+    <sbb-tab>
+      <ng-template sbb-tab-label>
+        First
+        <sbb-icon
+          svgIcon="kom:user-group-small"
+          class="example-tab-icon sbb-icon-scaled"
+        ></sbb-icon>
+      </ng-template>
+      Content 1
+    </sbb-tab>
+
+    <sbb-tab>
+      <ng-template sbb-tab-label>
+        Second
+        <sbb-icon
+          svgIcon="kom:bus-sbb-small"
+          class="example-tab-icon sbb-icon-scaled"
+        ></sbb-icon>
+      </ng-template>
+      Content 2
+    </sbb-tab>
+
+    <sbb-tab>
+      <ng-template sbb-tab-label>
+        Third
+        <sbb-icon
+          svgIcon="kom:cloud-rain-small"
+          class="example-tab-icon sbb-icon-scaled"
+        ></sbb-icon>
+      </ng-template>
+      Content 3
+    </sbb-tab>
+  </sbb-tab-group>
+</sbb-expansion-panel>
+<div style="margin-bottom: 20vh"></div>
